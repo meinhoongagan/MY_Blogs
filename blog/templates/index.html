@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}Iblog{% endblock %}
+{% block content %}
+{% comment %} {% for c in category %}
+<div>
+    <div class="row container m-5 "> 
+    <button href="/category_details" class="btn btn-primary">
+                <a href="{{c.urls}}" style="color: white; text-decoration: none;">Categories</a>
+            </button> 
+        </div>
+        <div class="col-4 mt-3">
+            <img src="/media/{{ c.image }}" style="width: 75%;" alt="category Image">
+        </div>
+    </div>
+</div>
+{% endfor %} {% endcomment %}
+
+<div class="col-md-6 offset-3 mt-3">
+    <section class="category">
+        <div id="categoryCarousel" class="carousel slide border border-success-subtle" data-bs-ride="carousel">
+            <div class="carousel-inner text-center">
+                {% for c in category %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        <div class="row container m-5">
+                            <div class="col-6 offset-2 mt-3 mb-3 text-center" style="color:white;">
+                                <h1>{{ c.title }}</h1>
+                                <p>{{ c.discription | truncatewords:30 | safe }}</p>
+                                <h5><a href="/{{ c.urls }}" class="m-4">{{ c.urls }}</a></h1>
+                               <button class="btn btn-primary">
+                                    <a  {% comment %} href="{% url 'category_detail' c.title %}" {% endcomment %} style="color: white; text-decoration: none;">Read more..</a>
+                                </button> 
+                            </div>
+                            <div class="col-3 mt-3">
+                                <img src="/media/{{ c.image }}" style="width: 95%;" alt="category Image">
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+</div>
+
+
+
+<div class="col-md-6 offset-3 mt-3">
+    <section class="post">
+        <div id="postCarousel" class="carousel slide border border-success-subtle" data-bs-ride="carousel">
+            <div class="carousel-inner text-center">
+                {% for p in post %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        <div class="row container m-5">
+                            <div class="col-6 offset-2 mt-3 mb-3 text-center" style="color:white;">
+                                <h1>{{ p.title }}</h1>
+                                <p>{{ p.content | truncatewords:30 | safe }}</p>
+                                <h4>{{ p.cat }}</h4>
+                                <button class="btn btn-primary">
+                                    <a href="{% url 'post_detail' p.title %}" style="color: white; text-decoration: none;">Read more..</a>
+                                </button>
+                            </div>
+                            <div class="col-3 mt-3">
+                                <img src="/media/{{ p.image }}" style="width: 95%;" alt="Post Image">
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    $('#categoryCarousel').carousel();
+    $('#postCarousel').carousel();
+
+    // Add your other script logic here
+</script>
+{% endblock %}

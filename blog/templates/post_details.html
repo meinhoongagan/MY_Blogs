@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Iblog{% endblock %}
+{% block content %}
+        <div class="">
+            <div class="row container m-5 border border-success">
+                <div class="col-8 mt-3 mb-3 text-center" style="color:white;">
+                    <h1>{{ post.title }}</h1>
+                    <p>{{ post.content | safe }}</p>
+                    <a href="{{ post.url }}">know more...</a>
+                    <h4>{{ post.cat }}</h4>
+                </div>
+                <div class="col-4 mt-3">
+                    <img src="/media/{{ post.image }}" style="width: 75%;" alt="Post Image">
+                </div>
+            </div>
+            </div>
+    </div>
+</div>
+
+{% endblock %}

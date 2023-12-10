@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Iblog{% endblock %}
+{% block content %}
+        {% for p in post %}
+        <div class="">
+            <div class="row container m-5 border border-success">
+                <div class="col-8 mt-3 mb-3 text-center" style="color:white;">
+                    <h1>{{ p.title }}</h1>
+                    <p>{{ p.content | truncatewords:30 | safe }}</p>
+                    <h4>{{ p.cat }}</h4>
+                    <button href="/post_details" class="btn btn-primary">
+                        <a href="{% url 'post_detail' p.title %}" style="color: white; text-decoration: none;">Read more.. </a>
+                    </button>
+                </div>
+                <div class="col-4 mt-3">
+                    <img src="/media/{{ p.image }}" style="width: 75%;" alt="Post Image">
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
