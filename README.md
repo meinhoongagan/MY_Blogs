@@ -16,7 +16,7 @@ Welcome to the Django Iblogs  App! This dynamic web application allows you to cr
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/Django-Iblogs -App.git
+   git clone https://github.com/meinhoongagan/Django-Iblogs -App.git
 2. **Install dependencies:**
     ```bash
     pip install -r requirements.txt
